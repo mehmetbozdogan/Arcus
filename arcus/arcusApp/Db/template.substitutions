@@ -1,0 +1,16 @@
+# template.substitutions
+# Template file for the Arcus PMX-4ET-SA Stepper Motor Controller
+# Mehmet Bozdogan 14/11/2017
+#
+# substitutions:
+# sys    - system
+# sec    - section
+# dev    - device
+# $(sys)-$(sec)-$(dev) - device port(devPort)
+#
+#
+################################################################################
+file db/arcus.template {
+    pattern { sys, sec, dev }
+        { "BL", "C001", "ARCUS" }
+}

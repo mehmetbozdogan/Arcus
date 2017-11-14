@@ -1,0 +1,270 @@
+# arcus.proto
+# Proto file for the Arcus PMX-4ET-SA Stepper Motor Controller
+# Mehmet Bozdogan 14/11/2017
+#
+################################################################################
+ReadTimeout = 100;
+WriteTimeout = 100;
+PollPeriod = 100;
+ReplyTimeout = 1000;
+LockTimeout = 5000;
+ExtraInput = Ignore;
+
+debug
+{
+	out "%s";
+	in "%s";
+}
+
+getStatus
+{
+	out "MST";
+	in "%(\$1:MSX)i:"
+	   "%(\$1:MSY)i:"
+	   "%(\$1:MSZ)i:"
+	   "%(\$1:MSU)i:"
+	   "%(\$1:BUFFERSTATUS){0|1}:"
+	   "%(\$1:BUFFERSTART)i:"
+	   "%(\$1:BUFFEREND)i:"
+	   "%(\$1:BUFFERAVA)i:"
+	   "%(\$1:MODE-RB){0|1}:";
+}
+
+setMode
+{
+	out "%{ABS|INC}";
+	in "OK";
+	@init
+	{
+	out "MST";
+	in "%*i:"
+	   "%*i:"
+	   "%*i:"
+	   "%*i:"
+	   "%*{0|1}:"
+	   "%*i:"
+	   "%*i:"
+	   "%*i:"
+	   "%{0|1}:";
+	}
+}
+
+getAcc
+{
+	out "ACC";
+	in "%i";
+}
+setAcc
+{
+	out "ACC=%i";
+	in "OK";
+	@init
+	{ getAcc; }
+}
+
+getDec
+{
+	out "DEC";
+	in "%i";
+}
+setDec
+{
+	out "DEC=%i";
+	in "OK";
+	@init
+	{ getDec; }
+}
+
+getAccAxis
+{
+	out "ACC\$1";
+	in "%i";
+}
+setAccAxis
+{
+	out "ACC\$1=%i";
+	in "OK";
+	@init
+	{ getAccAxis; }
+}
+
+getDecAxis
+{
+	out "DEC\$1";
+	in "%i";
+}
+setDecAxis
+{
+	out "DEC\$1=%i";
+	in "OK";
+	@init
+	{ getDecAxis; }
+}
+
+setBuffMode
+{
+	out "%{BOF|BO}";
+	in "OK";
+	@init
+	{
+	out "MST";
+	in "%*i:"
+	   "%*i:"
+	   "%*i:"
+	   "%*i:"
+	   "%{0|1}:"
+	   "%*i:"
+	   "%*i:"
+	   "%*i:"
+	   "%*{0|1}:";
+	}
+}
+
+getDigitalInput
+{
+	out "DI";
+	in "%i";
+}
+
+getDigitalOutput
+{
+	out "DO";
+	in "%i";
+}
+setDigitalOutput
+{
+	out "DO=%i";
+	in "OK";
+	@init
+	{ getDigitalOutput; }
+}
+clearError
+{
+	out "CLRX";
+	in "OK";
+	out "CLRY";
+	in "OK";
+	out "CLRZ";
+	in "OK";
+	out "CLRU";
+	in "OK";
+}
+
+getStepNLoop
+{
+	out "DX\$1";
+	in "%i";
+}
+
+getAxisStatus
+{
+	out "EO\$1";
+	in "%{0|1}";
+}
+setAxisSwitch
+{
+	out "EO\$1=%{0|1}";
+	in "OK";
+	@init
+	{ getAxisStatus; }
+}
+
+getOnBootStatus
+{
+	out "EOBOOT";
+	in "%i";
+}
+setOnBootStatus
+{
+	out "EOBOOT=%i";
+	in "OK";
+	@init
+	{ getOnBootStatus; }
+}
+
+setEncZero
+{
+	out "E\$1=0";
+	in "OK";
+}
+
+getGlobalHS
+{
+	out "HS";
+	in "%i";
+}
+setGlobalHS
+{
+	out "HS=%i";
+	in "OK";
+	@init
+	{ getGlobalHS; }
+}
+
+getGlobalLS
+{
+	out "LS";
+	in "%i";
+}
+setGlobalLS
+{
+	out "LS=%i";
+	in "OK";
+	@init
+	{ getGlobalLS; }
+}
+
+getAxisHS
+{
+	out "HS\$1";
+	in "%i";
+}
+setAxisHS
+{
+	out "HS\$1=%i";
+	in "OK";
+	@init
+	{ getAxisHS; }
+}
+getAxisLS
+{
+	out "LS\$1";
+	in "%i";
+}
+setAxisLS
+{
+	out "LS\$1=%i";
+	in "OK";
+	@init
+	{ getAxisLS; }
+}
+
+getEncPositions
+{
+	out "PE";
+	in "%(\$1:XPOSITION-RB)i:%(\$1:YPOSITION-RB)i:%(\$1:ZPOSITION-RB)i:%(\$1:UPOSITION-RB)i";
+}
+getPosition
+{
+	out "P\$1";
+	in "%i";
+}
+setPosition
+{
+	out "\$1%i";
+	in "OK";
+	@init
+	{ getPosition; }
+}
+
+goProgrammed
+{
+	out "X%(\$1:XP\$2-SP)i";
+	in "OK";
+	out "Y%(\$1:YP\$2-SP)i";
+	in "OK";
+	out "Z%(\$1:ZP\$2-SP)i";
+	in "OK";
+	out "U%(\$1:UP\$2-SP)i";
+	in "OK";
+}
