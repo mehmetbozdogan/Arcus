@@ -184,6 +184,15 @@ record(longin, "$(sys)-$(sec)-$(dev):ACC-RB")
 	field(SCAN, "2 second")
 }
 
+#record(calcout, "$(sys)-$(sec)-$(dev):ACC-MAX")
+#{
+#	field(INPA, "10")
+#	field(INPB, "10")
+#	field(CALC, "")
+#	field(OUT,  "$(sys)-$(sec)-$(dev):ACC-SP.DRVH")
+#	field(EGU, "ms")
+#}
+
 record(longout, "$(sys)-$(sec)-$(dev):ACC-SP")
 {
 	field(DESC, "$(dev) global acceleration setpoint")
@@ -518,6 +527,31 @@ record(bo, "$(sys)-$(sec)-$(dev):UENCSZERO")
 	field(OUT,  "@arcus.proto setEncZero(U) $(sys)-$(sec)-$(dev)")
 }
 
+record(bo, "$(sys)-$(sec)-$(dev):XPOSSZERO")
+{
+	field(DESC, "$(dev) Set X Position value to Zero")
+	field(DTYP, "stream")
+	field(OUT,  "@arcus.proto setPositionZero(X) $(sys)-$(sec)-$(dev)")
+}
+record(bo, "$(sys)-$(sec)-$(dev):YPOSSZERO")
+{
+	field(DESC, "$(dev) Set Y Position value to Zero")
+	field(DTYP, "stream")
+	field(OUT,  "@arcus.proto setPositionZero(Y) $(sys)-$(sec)-$(dev)")
+}
+record(bo, "$(sys)-$(sec)-$(dev):ZPOSSZERO")
+{
+	field(DESC, "$(dev) Set Z Position value to Zero")
+	field(DTYP, "stream")
+	field(OUT,  "@arcus.proto setPositionZero(Z) $(sys)-$(sec)-$(dev)")
+}
+record(bo, "$(sys)-$(sec)-$(dev):UPOSSZERO")
+{
+	field(DESC, "$(dev) Set U Position value to Zero")
+	field(DTYP, "stream")
+	field(OUT,  "@arcus.proto setPositionZero(U) $(sys)-$(sec)-$(dev)")
+}
+
 record(longin, "$(sys)-$(sec)-$(dev):HS-RB")
 {
 	field(DESC, "$(dev) Axiss global high speed readback")
@@ -701,11 +735,36 @@ record(longout, "$(sys)-$(sec)-$(dev):ULS-SP")
 	field(EGU, "pps")
 }
 
-record(longin, "$(sys)-$(sec)-$(dev):POSITION-RB")
+
+record(longin, "$(sys)-$(sec)-$(dev):ENCPOSITION-RB")
 {
 	field(DESC, "$(dev) Axiss Position readback")
 	field(DTYP, "stream")
 	field(INP,  "@arcus.proto getEncPositions($(sys)-$(sec)-$(dev)) $(sys)-$(sec)-$(dev)")
+	field(SCAN, "1 second")
+}
+record(longin, "$(sys)-$(sec)-$(dev):XENCPOSITION-RB")
+{
+	field(DESC, "$(dev) Axis X ENC Position readback")
+}
+record(longin, "$(sys)-$(sec)-$(dev):YENCPOSITION-RB")
+{
+	field(DESC, "$(dev) Axis Y ENC Position readback")
+}
+record(longin, "$(sys)-$(sec)-$(dev):ZENCPOSITION-RB")
+{
+	field(DESC, "$(dev) Axis Z ENC Position readback")
+}
+record(longin, "$(sys)-$(sec)-$(dev):UENCPOSITION-RB")
+{
+	field(DESC, "$(dev) Axis U ENC Position readback")
+}
+
+record(longin, "$(sys)-$(sec)-$(dev):POSITION-RB")
+{
+	field(DESC, "$(dev) Axiss Position readback")
+	field(DTYP, "stream")
+	field(INP,  "@arcus.proto getPositions($(sys)-$(sec)-$(dev)) $(sys)-$(sec)-$(dev)")
 	field(SCAN, "1 second")
 }
 record(longin, "$(sys)-$(sec)-$(dev):XPOSITION-RB")
@@ -748,6 +807,8 @@ record(longout, "$(sys)-$(sec)-$(dev):UPOSITION-SP")
 	field(DTYP, "stream")
 	field(OUT,  "@arcus.proto setPosition(U) $(sys)-$(sec)-$(dev)")
 }
+
+
 
 
 record(longout, "$(sys)-$(sec)-$(dev):GO1")
