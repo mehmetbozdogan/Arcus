@@ -188,6 +188,12 @@ setEncZero
 	in "OK";
 }
 
+setPositionZero
+{
+	out "P\$1=0";
+	in "OK";
+}
+
 getGlobalHS
 {
 	out "HS";
@@ -242,6 +248,11 @@ setAxisLS
 getEncPositions
 {
 	out "PE";
+	in "%(\$1:XENCPOSITION-RB)i:%(\$1:YENCPOSITION-RB)i:%(\$1:ZENCPOSITION-RB)i:%(\$1:UENCPOSITION-RB)i";
+}
+getPositions
+{
+	out "PP";
 	in "%(\$1:XPOSITION-RB)i:%(\$1:YPOSITION-RB)i:%(\$1:ZPOSITION-RB)i:%(\$1:UPOSITION-RB)i";
 }
 getPosition
