@@ -17,6 +17,13 @@ record(stringout, "$(sys)-$(sec)-$(dev):DEBUG")
 	field(OUT,  "@arcus.proto debug $(sys)-$(sec)-$(dev)")
 }
 
+record(bo, "$(sys)-$(sec)-$(dev):STORE")
+{
+	field(DESC, "$(dev) get status")
+	field(DTYP, "stream")
+	field(OUT,  "@arcus.proto store $(sys)-$(sec)-$(dev)")
+}
+
 record(bi, "$(sys)-$(sec)-$(dev):STATUS")
 {
 	field(DESC, "$(dev) get status")
