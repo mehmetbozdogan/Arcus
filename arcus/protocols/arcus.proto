@@ -16,6 +16,12 @@ debug
 	in "%s";
 }
 
+store
+{
+	out "STORE";
+	in "OK";
+}
+
 getStatus
 {
 	out "MST";
