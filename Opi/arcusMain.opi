@@ -2419,7 +2419,7 @@ $(pv_value)</tooltip>
     <background_color>
       <color red="240" green="240" blue="240" />
     </background_color>
-    <width>181</width>
+    <width>221</width>
     <x>422</x>
     <name>Rectangle</name>
     <y>54</y>
@@ -2581,7 +2581,7 @@ $(pv_value)</tooltip>
       <color red="240" green="240" blue="240" />
     </background_color>
     <width>70</width>
-    <x>512</x>
+    <x>481</x>
     <name>Boolean Button_1</name>
     <data_type>0</data_type>
     <y>147</y>
@@ -2642,7 +2642,7 @@ $(pv_value)</tooltip>
       <color red="240" green="240" blue="240" />
     </background_color>
     <width>70</width>
-    <x>512</x>
+    <x>481</x>
     <name>Boolean Button</name>
     <data_type>0</data_type>
     <y>174</y>
@@ -2703,7 +2703,7 @@ $(pv_value)</tooltip>
       <color red="240" green="240" blue="240" />
     </background_color>
     <width>70</width>
-    <x>512</x>
+    <x>481</x>
     <name>Boolean Button_2</name>
     <data_type>0</data_type>
     <y>122</y>
@@ -2764,7 +2764,7 @@ $(pv_value)</tooltip>
       <color red="240" green="240" blue="240" />
     </background_color>
     <width>70</width>
-    <x>512</x>
+    <x>481</x>
     <name>Boolean Button_3</name>
     <data_type>0</data_type>
     <y>96</y>
@@ -3704,5 +3704,59 @@ $(pv_value)</tooltip>
         <opifont.name fontName="Cantarell" height="11" style="0">Default</opifont.name>
       </font>
     </widget>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+    <toggle_button>false</toggle_button>
+    <border_style>0</border_style>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <alarm_pulsing>false</alarm_pulsing>
+    <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+    <push_action_index>0</push_action_index>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-a89d34f:15fcdb87e20:-7f64</wuid>
+    <pv_value />
+    <text>Store</text>
+    <scripts />
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>34</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <image></image>
+    <visible>true</visible>
+    <pv_name>pva://$(dev):STORE</pv_name>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <widget_type>Action Button</widget_type>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <width>58</width>
+    <x>570</x>
+    <name>Action Button_7</name>
+    <y>127</y>
+    <style>0</style>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <actions hook="false" hook_all="false">
+      <action type="WRITE_PV">
+        <pv_name>$(pv_name)</pv_name>
+        <value>1</value>
+        <timeout>10</timeout>
+        <confirm_message></confirm_message>
+        <description></description>
+      </action>
+    </actions>
+    <font>
+      <opifont.name fontName="Cantarell" height="11" style="0">Default</opifont.name>
+    </font>
   </widget>
 </display>
