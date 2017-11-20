@@ -15,10 +15,10 @@ arcus_registerRecordDeviceDriver(pdbbase)
 ## Load record instances
 dbLoadTemplate "db/template.substitutions"
 
-drvAsynIPPortConfigure ("BL-C001-ARCUS", "192.168.1.250:5001")
-asynSetTraceMask("BL-C001-ARCUS",-1,0x9)
-asynSetTraceIOMask("BL-C001-ARCUS",-1,0x2)
+drvAsynIPPortConfigure ("SYS-SEC-ARCUS", "192.168.1.250:5001")
+asynSetTraceMask("SYS-SEC-ARCUS",-1,0x9)
+asynSetTraceIOMask("SYS-SEC-ARCUS",-1,0x2)
 
 cd "${TOP}/iocBoot/${IOC}"
-iocInit
+iocInit()
 startPVAServer
